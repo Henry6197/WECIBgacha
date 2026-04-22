@@ -12,7 +12,7 @@ const CASES = [
   {
     name: 'MHS Case',
     price: 12,
-    image: 'Images/crate1.png',
+    image: 'images/mhsCrate.png',
     flavor: 'Hallway lore, familiar spots, and the daily chaos that built the wiki.',
     items: [
       { name: 'South Hall Stampede', rarity: 'freshman', attack: 42, defense: 35, description: 'The passing-period traffic jam that somehow happens every single day.' },
@@ -29,7 +29,7 @@ const CASES = [
   {
     name: 'RT2 Case',
     price: 24,
-    image: 'Images/rt2Crate.png',
+    image: 'images/rt2Crate.png',
     flavor: 'More focused event cards and higher-end pulls from the deeper lore pool.',
     items: [
       { name: 'Genesis', rarity: 'freshman', attack: 136, defense: 121, description: 'The day the hallway became a full production set.' },
@@ -42,7 +42,7 @@ const CASES = [
   {
     name: 'RT1 Case',
     price: 40,
-    image: 'Images/rt1Crate.png',
+    image: 'images/rt1Crate.png',
     flavor: 'Premium pulls with stacked senior odds and the most replayed WECIB moments.',
     items: [
       { name: 'Morning Announcement Misfire', rarity: 'freshman', attack: 48, defense: 40, description: 'A small glitch that bought itself a lot of attention.' },
