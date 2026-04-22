@@ -1,9 +1,9 @@
 const RARITIES = {
-  freshman: { label: 'Freshman' },
-  sophomore: { label: 'Sophomore' },
-  junior: { label: 'Junior' },
-  senior: { label: 'Senior' },
-  superSenior: { label: 'Super-Senior' },
+  freshman:   { label: 'Freshman',    template: 'images/templates/FreshmanCardTemplate.png' },
+  sophomore:  { label: 'Sophomore',   template: 'images/templates/SophomoreCardTemplate.png' },
+  junior:     { label: 'Junior',      template: 'images/templates/JuniorCardTemplate.png' },
+  senior:     { label: 'Senior',      template: 'images/templates/SeniorCardTemplate.png' },
+  superSenior:{ label: 'Super-Senior',template: 'images/templates/Super-SeniorCardTemplate.png' },
 };
 
 const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior'];
@@ -50,22 +50,20 @@ function getRarityRank(rarityKey) {
 
 function renderCardMarkup(card) {
   const safeCard = enrichCard(card);
+  const templateSrc = RARITIES[safeCard.rarityKey].template;
 
   return `
-    <article class="display-card rarity-${safeCard.rarityKey}">
-      <div class="card-badge">
-        <span>${initialsFromName(safeCard.name)}</span>
+    <div class="tcg-card rarity-${safeCard.rarityKey}">
+      <img class="tcg-template" src="${templateSrc}" alt="">
+      <div class="tcg-art-area">
+        <span class="tcg-art-initials">${initialsFromName(safeCard.name)}</span>
       </div>
-      <div class="card-copy">
-        <p class="card-rarity">${safeCard.rarityLabel}</p>
-        <h4>${safeCard.name}</h4>
-        <p class="card-description">${safeCard.description || 'No description yet.'}</p>
-        <div class="card-stats">
-          <span>ATK ${safeCard.attack}</span>
-          <span>DEF ${safeCard.defense}</span>
-        </div>
+      <div class="tcg-text-area">
+        <h4 class="tcg-name">${safeCard.name}</h4>
+        <p class="tcg-desc">${safeCard.description || ''}</p>
+        <div class="tcg-stats">ATK ${safeCard.attack} &nbsp;|&nbsp; DEF ${safeCard.defense}</div>
       </div>
-    </article>
+    </div>
   `;
 }
 
@@ -135,19 +133,14 @@ function renderCollection() {
     const groupKey = `${group.name}::${group.rarityKey}::${group.caseName}`;
 
     collectionCard.innerHTML = `
-      <div class="collection-card-top">
-        <span class="copy-count">x${group.copies}</span>
-        <span class="collection-case">${group.caseName}</span>
-      </div>
       ${renderCardMarkup(group)}
-      <div class="collection-actions">
-        <p class="sell-value">Sell value: ${formatPP(sellValue)} PP each</p>
+      <div class="card-overlay">
+        <span class="copy-count">x${group.copies}</span>
         <div class="collection-buttons">
           <button type="button" class="btn btn-secondary btn-sell-one">Sell 1</button>
-          <button type="button" class="btn btn-open btn-sell-all">Sell All (${group.copies})</button>
+          <button type="button" class="btn btn-open btn-sell-all">Sell All</button>
         </div>
       </div>
-      <p class="collection-foot">Last pulled ${new Date(group.wonAt).toLocaleString()}</p>
     `;
 
     const sellOneBtn = collectionCard.querySelector('.btn-sell-one');
