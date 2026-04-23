@@ -13,7 +13,7 @@ const CASES = [
     name: 'MHS Case',
     price: 12,
     image: 'images/mhsCrate.png',
-    flavor: 'Hallway lore, familiar spots, and the daily chaos that built the wiki.',
+    flavor: 'Youngings.',
     items: [
       { name: 'South Hall Stampede', rarity: 'freshman', attack: 42, defense: 35, description: 'The passing-period traffic jam that somehow happens every single day.' },
       { name: 'MHS Campus', rarity: 'freshman', attack: 38, defense: 44, description: 'A wide-angle classic. Reliable, crowded, and always relevant.' },
@@ -72,8 +72,16 @@ const CASES = [
       { name: 'Beatrice Kovalik', rarity: 'freshman', attack: 136, defense: 121, description: '  Ballet ahh junior. ' },
     ],
   },
+  {
+    name: 'Wake Tech Case',
+    price: 250,
+    image: 'images/WakeTechCrate (1).png',
+    flavor: 'More focused event cards and higher-end pulls from the deeper lore pool.',
+    items: [
+      { name: 'Reg Thiago-Ramos ', rarity: 'freshman', attack: 136, defense: 121, description: ' Aura. (junior)' },
+    ],
+  },
 ];
-
 let selectedCase = null;
 let isSpinning = false;
 
