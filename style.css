@@ -356,6 +356,22 @@ button {
   text-align: center;
 }
 
+.roulette-item .item-template {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.roulette-strip.spinning .roulette-item .item-icon,
+.roulette-strip.spinning .roulette-item .item-name {
+  display: none;
+}
+
+.roulette-strip.spinning .roulette-item .item-template {
+  display: block;
+}
+
 .display-card {
   display: grid;
   grid-template-columns: 74px 1fr;
