@@ -79,12 +79,12 @@ const CASES = [
       { name: 'Alex Frieders', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AlexFrieders.png', attack: 19, defense: 42, description: ' Freaky ahh junior.' },
       { name: 'AB', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AB.png', attack: 32, defense: 62, description: 'No one knows what it stands for. Could possibly stand for A B-Junior' },
       { name: 'Anna Moore', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AnnaMoore.PNG', attack: 39, defense: 55, description: 'Boy scout, knows some Japanese. Junior' },
-      { name: 'Christian', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Christian.png', attack: 51, defense: 45, description: 'The day the hallway became a full production set.' },
+      { name: 'Christian', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Christian.png', attack: 51, defense: 45, description: 'short. Also a junior..' },
       { name: 'Darsh', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Darsh.png', attack: 78, defense: 50, description: ' Leader of the Vending Machine Scandal of ‘24. Junior.' },
       { name: 'Eris Thompson', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/ErisThompson.png', attack: 88, defense: 73, description: 'Cooler twin. Also a junior.' },
       { name: 'Henry Short', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/HenryShort.png', attack: 89, defense: 77, description: 'Short junior, wakeID is heshort.' },
       { name: 'Iniya', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iniya.png', attack: 44, defense: 27, description: 'Was once a Hufflepuff, is now a Ravenclaw. Junior.' },
-      { name: 'Iremide', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iremide.png', attack: 24, defense: 29, description: 'The day the hallway became a full production set.' },
+      { name: 'Iremide', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iremide.png', attack: 24, defense: 29, description: 'Really good at soccer. Not so much at basketball, though. Junior.' },
     
 
       { name: 'Nicholas Foles', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/NicholasFoles.PNG', attack: 40, defense: 68, description: ' THE PRESIDENT, El Presidente himself, Lebron’s idol, cutie patooty. Also a junior' },
@@ -141,6 +141,7 @@ const CASES = [
       
     ],
   },
+  
 ];
 
 let selectedCase = null;
