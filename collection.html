@@ -8,48 +8,87 @@
 </head>
 <body>
   <div id="app">
-    <nav class="top-nav">
-      <a class="nav-link" href="index.html">Case Opener</a>
-      <a class="nav-link is-active" href="collection.html">Collection</a>
+    <nav class="nav-container">
+        <div class="nav-pill">
+            <a class="nav-link" href="index.html">Case Opener</a>
+            <a class="nav-link is-active" href="collection.html">Collection</a>
+        </div>
     </nav>
 
-    <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">WECIBGacha Archive</p>
-        <h1>Your collection, duplicates, and rarity spread.</h1>
-      </div>
+    <header class="hero-grid">
+        <section class="hero-banner glass-card">
+            <p class="eyebrow">WECIBGacha Archive</p>
+            <h1>Your collection</h1>
+        </section>
 
-      <div class="hero-stats">
-        <article class="stat-card accent-red">
-          <span class="stat-label">PP Balance</span>
-          <strong id="balance">120.00</strong>
-        </article>
-        <article class="stat-card accent-gold">
-          <span class="stat-label">Collection Size</span>
-          <strong id="inventoryCount">0</strong>
-        </article>
-        <article class="stat-card accent-blue">
-          <span class="stat-label">Passive Rate</span>
-          <strong><span id="incomeRate">0.00</span> PP/hr</strong>
-        </article>
-      </div>
+        <div class="stats-column">
+            <div class="mini-stats-grid">
+                <article class="stat-card">
+                    <span class="stat-label">PP Balance</span>
+                    <strong id="balance">0.00</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Size</span>
+                    <strong id="inventoryCount">0</strong>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Rate</span>
+                    <strong id="incomeRate">0.00</strong>
+                </article>
+            </div>
+
+            <section class="rarity-stats-card glass-card">
+                <span class="stat-label">Collection Rarity Stats</span>
+                <div class="chart-container">
+                    <div class="doughnut-chart" id="rarityChart"></div>
+                </div>
+                <div id="rarityLegend" class="rarity-legend">
+                    </div>
+            </section>
+        </div>
     </header>
 
     <main class="dashboard">
-      <section class="panel collection-section">
-        <div class="panel-header split-header">
-          <div>
-            <h2>Collection</h2>
-            <p id="collectionSummary">No cards collected yet.</p>
-          </div>
-          <button id="resetProgressBtn" class="btn btn-secondary">Reset Progress</button>
+  <section class="panel collection-section">
+    <div class="panel-header search-controls">
+      <div class="search-section-left">
+        <h2>Collection</h2>
+        <div class="search-wrapper">
+          <input type="text" id="searchInput" placeholder="Search Collection...">
         </div>
+      </div>
+      
+      <div class="controls-group">
+        <select id="rarityFilter" class="filter-select">
+          <option value="all">All Rarities</option>
+          <option value="freshman">Freshman</option>
+          <option value="sophomore">Sophomore</option>
+          <option value="junior">Junior</option>
+          <option value="senior">Senior</option>
+          <option value="superSenior">Super-Senior</option>
+        </select>
+        
+        <select id="dateSort" class="filter-select">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="rarityDesc">Rarity: High to Low</option>
+          <option value="rarityAsc">Rarity: Low to High</option>
+          <option value="atkDesc">ATK: High to Low</option>
+          <option value="atkAsc">ATK: Low to High</option>
+          <option value="defDesc">DEF: High to Low</option>
+          <option value="defAsc">DEF: Low to High</option>
+          <option value="alpha">A-Z Name</option>
+        </select>
+        
+        <button id="resetProgressBtn" class="btn btn-secondary">Reset</button>
+      </div>
+    </div>
 
-        <p class="collection-empty" id="collectionEmpty">Open your first case to start building the WECIB archive.</p>
-        <div class="collection-grid" id="collectionGrid"></div>
-      </section>
-    </main>
-  </div>
+    <p class="collection-empty" id="collectionEmpty">Open your first case to start building the archive.</p>
+    <div class="collection-grid" id="collectionGrid"></div>
+  </section>
+</main>
+</div>
   <script src="storage.js"></script>
   <script src="collection.js"></script>
 </body>
