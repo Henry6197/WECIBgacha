@@ -53,7 +53,7 @@ function normalizeCard(card) {
 function createDefaultState() {
   return {
     version: 1,
-    ppBalance: 5000,
+    ppBalance: 120,
     inventory: [],
     lastAccrualAt: Date.now(),
   };

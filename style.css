@@ -354,6 +354,7 @@ button {
   justify-content: center;
   padding: 8px;
   text-align: center;
+  position: relative;
 }
 
 .roulette-item .item-template {
@@ -363,12 +364,29 @@ button {
   object-fit: contain;
 }
 
+.roulette-item .item-card-img {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3;
+}
+
 .roulette-strip.spinning .roulette-item .item-icon,
 .roulette-strip.spinning .roulette-item .item-name {
   display: none;
 }
 
 .roulette-strip.spinning .roulette-item .item-template {
+  display: block;
+}
+
+.roulette-strip.spinning .roulette-item .item-card-img {
   display: block;
 }
 
