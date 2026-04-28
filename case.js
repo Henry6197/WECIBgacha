@@ -1,12 +1,14 @@
 const RARITIES = {
-  freshman: { label: 'Freshman', color: '#d7e3ff', accent: '#3259a8', weight: 58, templateImage: 'Images/templates/FreshmanCardTemplate.png' },
-  sophomore: { label: 'Sophomore', color: '#d9f7c8', accent: '#3b7a2f', weight: 25, templateImage: 'Images/templates/SophomoreCardTemplate.png' },
-  junior: { label: 'Junior', color: '#b9d4ff', accent: '#1742b8', weight: 11, templateImage: 'Images/templates/JuniorCardTemplate.png' },
-  senior: { label: 'Senior', color: '#ffd3a9', accent: '#b34d13', weight: 4, templateImage: 'Images/templates/SeniorCardTemplate.png' },
-  superSenior: { label: 'Super-Senior', color: '#ffe48c', accent: '#8b5e00', weight: 2, templateImage: 'Images/templates/Super-SeniorCardTemplate.png' },
+  freshman: { label: 'Freshman', color: '#d7e3ff', accent: '#3259a8', weight: 67, templateImage: 'Images/templates/FreshmanCardTemplate.png' },
+  sophomore: { label: 'Sophomore', color: '#d9f7c8', accent: '#3b7a2f', weight: 17.8, templateImage: 'Images/templates/SophomoreCardTemplate.png' },
+  sophomore: { label: 'Sophomore', color: '#d9f7c8', accent: '#3b7a2f', weight: 17.8, templateImage: 'Images/templates/SophomoreCardTemplate.png' },
+  junior: { label: 'Junior', color: '#b9d4ff', accent: '#1742b8', weight: 12, templateImage: 'Images/templates/JuniorCardTemplate.png' },
+  senior: { label: 'Senior', color: '#ffd3a9', accent: '#b34d13', weight: 3, templateImage: 'Images/templates/SeniorCardTemplate.png' },
+  superSenior: { label: 'Super-Senior', color: '#ffe48c', accent: '#8b5e00', weight: 0.2, templateImage: 'Images/templates/Super-SeniorCardTemplate.png' }, 
+  graduated: {label: 'Graduated', color:'#8c52ff', accent: '#cb6ce6', weight: 0.005 },
 };
 
-const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior'];
+const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior', 'Graduated'];
 
 const CASES = [
   {
@@ -15,13 +17,18 @@ const CASES = [
     image: 'images/mhsCrate.png',
     flavor: 'Youngings',
     items: [
-      { name: 'Gymnasium', rarity: 'sophomore', attack: 72, defense: 68, description: 'The gymnasium of MHS, where dreams are made, hearts are broken, and dodgeballs are thrown..' },
-      { name: 'MHS Campus', rarity: 'sophomore', attack: 61, defense: 79, description: 'The campus of the lesser- ahem, the under classmen.' },
-      { name: 'As Many People As Want Their Picture Taken', rarity: 'sophomore', attack: 85, defense: 54, description: 'A quote with permanent aura. Nobody fully explains it, everyone remembers it.' },
-      { name: 'Theater', rarity: 'sophomore', attack: 58, defense: 82, description: 'Home to many lost children, where they are forced to act in front of people for their entertainment, led by their cruel dictator, Mrs. Kaulfuss.' },
-      { name: 'Wallholes', rarity: 'junior', attack: 95, defense: 88, description: 'Architectural mystery turned community bit.' },
-      { name: 'Mr. Gross', rarity: 'senior', attack: 132, defense: 119, description: 'What could he be thinking about? ' },
-      { name: 'Vending Machine Incident of 24', rarity: 'superSenior', attack: 167, defense: 154, description: 'Peak WECIB legend status. The pull everybody talks about.' },
+      { name: 'Gymnasium', rarity: 'sophmore', attack: 131, defense: 52, description: 'The gymnasium of MHS, where dreams are made, hearts are broken, and dodgeballs are thrown..' },
+      { name: 'MHS Campus', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/MHSCampus.png', attack: 60, defense: 34, description: 'The campus of the lesser- ahem, the under classmen.' },
+      { name: 'Theater', rarity: 'sophomore', attack: 92, defense: 93, description: 'Home to many lost children, where they are forced to act in front of people for their entertainment, led by their cruel dictator, Mrs. Kaulfuss.' },
+      { name: 'Wallholes', rarity: 'junior', attack: 165, defense: 213, description: 'Architectural mystery turned community bit.' },
+      { name: 'Mr. Gross', rarity: 'senior', attack: 275, defense: 217, description: 'What could he be thinking about? ' },
+      { name: 'Vending Machine Incident of 24', rarity: 'superSenior', attack: 432, defense: 488, description: 'Peak WECIB legend status. The pull everybody talks about.' },
+      { name: 'Jacob Hartzell', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/JacobHartzell.png', attack: 39, defense: 83, description: ' Jacob Hartzell is a cutie patooty junior. ' },
+       { name: 'Reg Thiago-Ramos ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/RegRamos.png', attack: 22, defense: 67, description: ' Aura. (junior)' },
+       { name: 'Noah Couch', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/NoahCouch.png', attack: 23, defense: 56, description: 'The day the hallway became a full production set.' },
+       { name: 'Rafal Toberek', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Rafal.png', attack: 45, defense: 74, description: ' Polish, Mexican, left-handed, & racist. Also a junior.' },
+       { name: 'Ryan Shutte', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/RyanShutte.png', attack: 29, defense: 30, description: 'The day the hallway became a full production set.' },
+       { name: 'Serena', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/SerenaRogers.png', attack: 61, defense: 30, description: ' Owns a 3DS and plays Luigi’s Mansion. Junior' },
       
     ],
   },
@@ -31,33 +38,32 @@ const CASES = [
     image: 'images/rt2Crate.png',
     flavor: 'The Main Attraction, RT2 events, folks, and gatherings',
     items: [
-      { name: 'Genesis', rarity: 'freshman', attack: 45, defense: 38, description: ' Elnatan’s girlfriend, yet is still the man of the house. Junior. ' },
-       { name: 'Vending Machine Incident of 24', rarity: 'superSenior', attack: 172, defense: 161, description: 'The defining chase card of Sprint 1.' },
-       { name: 'Emilia Fisher', rarity: 'freshman', attack: 52, defense: 41, description: ' Duck. Junior.' },
-       { name: 'Jacob Hartzell', rarity: 'freshman', attack: 38, defense: 29, description: ' Jacob Hartzell is a cutie patooty junior. ' },
-       { name: 'Reg Thiago-Ramos ', rarity: 'freshman', attack: 44, defense: 47, description: ' Aura. (junior)' },
-       { name: 'Anna Split', rarity: 'sophomore', attack: 67, defense: 73, description: ' Made like a banana and split' },
-       { name: 'Chandler', rarity: 'sophomore', attack: 79, defense: 61, description: ' Charlie’s boyfriend, yet still the housewife. Junior.' },
-       { name: 'Charlie', rarity: 'sophomore', attack: 63, defense: 84, description: ' Wesker. Junior.' },
-       { name: 'Dude Guys', rarity: 'sophomore', attack: 88, defense: 52, description: ' Just some dudes. And guys. On Serena’s hoodie.' },
-       { name: 'Logain', rarity: 'freshman', attack: 56, defense: 33, description: 'THE BioTech student. Junior.' },
-       { name: 'JosephJamesLennertIII', rarity: 'sophomore', attack: 74, defense: 69, description: ' Joseph. Creator of the Silly Guys. They have outgrown and overthrown him, though.' },
-       { name: 'JoJo’s', rarity: 'sophomore', attack: 59, defense: 77, description: '- Jamey thinks he’s a JoJo character. We don’t have the heart to tell him otherwise.' },
-       { name: '2Nick  ', rarity: 'junior', attack: 103, defense: 96, description: ' Durag (bandana) provided by Mr. Aura himself — Reg.' },
-       { name: 'Academic Rigor', rarity: 'junior', attack: 91, defense: 112, description: ' Look how dedicated and studious this man is. Truly a man to use as an idol. ' },
-       { name: 'Aura Farming', rarity: 'junior', attack: 115, defense: 87, description: ' We don’t know where he got that umbrella. Or how he got on the table.' },
-       { name: 'Ethan Gardner ', rarity: 'junior', attack: 98, defense: 105, description: ' Ethan Gardner. Potentially Mr. Gardner’s long lost twin.' },
-       { name: 'Low Poly Jamey', rarity: 'junior', attack: 107, defense: 94, description: 'From Joseph’s Junior Vice President campaign video.' },
-       { name: 'Sami', rarity: 'junior', attack: 84, defense: 110, description: 'Commonly confused for Samuel L. Jackson. Rotated 180 degrees for dramatic effect.' }, 
-       { name: 'Silly Guy', rarity: 'junior', attack: 101, defense: 92, description: '- Some silly guy. Created by Joseph' }, 
-       { name: 'Group Bonding', rarity: 'junior', attack: 93, defense: 108, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
-       { name: 'Freshman Jamey', rarity: 'junior', attack: 116, defense: 81, description: ' THE Dragon James himself, but when he was a freshman, both his brain cells were already in a fierce battle for top 10. ' },
-       { name: 'Group Bonding', rarity: 'junior', attack: 89, defense: 114, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
-       { name: 'Group Bonding', rarity: 'senior', attack: 141, defense: 126, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
-       { name: 'The Tunnel Gang ', rarity: 'senior', attack: 128, defense: 147, description: ' It’s like Stand by Me but instead of walking on the train tracks they’re walking through the sewer.' },
-       { name: 'Please Jamey I Need This', rarity: 'senior', attack: 136, defense: 133, description: ' PLEASE JAMEY I NEEEEEEEEEEEED THIS' },
-       { name: '2 Best Buds', rarity: 'senior', attack: 150, defense: 118, description: '  Despite differences, they still find the ability to become the bestest of buds. So very inspirational.' },
-       { name: 'Coworkers', rarity: 'superSenior', attack: 158, defense: 172, description: '  Nick didn’t consent to this photo. Daniel laughed.' },
+      { name: 'Genesis', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Genesis.png', attack: 16, defense: 73, description: ' Elnatan’s girlfriend, yet is still the man of the house. Junior. ' },
+       { name: 'Vending Machine Incident of 24', rarity: 'superSenior', attack: 488, defense: 328, description: 'The defining chase card of Sprint 1.' },
+       { name: 'Emilia Fisher', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/EmiliaFisher.png', attack: 86, defense: 29, description: ' Duck. Junior.' },
+       
+       { name: 'Anna Split', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/AnnaSplit.png', attack: 86, defense: 84, description: ' Made like a banana and split' },
+       { name: 'Chandler', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/ChandlerThompson.png', attack: 36, defense: 78, description: ' Charlie’s boyfriend, yet still the housewife. Junior.' },
+       { name: 'Charlie', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/CharlieSanchez.png', attack: 94, defense: 138, description: ' Wesker. Junior.' },
+       { name: 'Dude Guys', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/DudeGuys.png', attack: 122, defense: 123, description: ' Just some dudes. And guys. On Serena’s hoodie.' },
+       { name: 'Logain', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Logain.png', attack: 23, defense: 22, description: 'THE BioTech student. Junior.' },
+       { name: 'JosephJamesLennertIII', rarity: 'sophomore', attack: 66, defense: 139, description: ' Joseph. Creator of the Silly Guys. They have outgrown and overthrown him, though.' },
+       { name: 'JoJo’s', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/Jojos.png', attack: 117, defense: 57, description: 'Jamey thinks he’s a JoJo character. We don’t have the heart to tell him otherwise.' },
+       { name: '2Nick  ', rarity: 'junior', attack: 168, defense: 154, description: ' Durag (bandana) provided by Mr. Aura himself — Reg.' },
+       { name: 'Academic Rigor', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/AcademicRigor.JPG', attack: 144, defense: 192, description: ' Look how dedicated and studious this man is. Truly a man to use as an idol. ' },
+       { name: 'Aura Farming', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/AuraFarming.png', attack: 162, defense: 176, description: ' We don’t know where he got that umbrella. Or how he got on the table.' },
+       { name: 'Ethan Gardner ', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/EthanGardner.JPG', attack: 105, defense: 220, description: ' Ethan Gardner. Potentially Mr. Gardner’s long lost twin.' },
+       { name: 'Low Poly Jamey', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/LowPolyJamey.png', attack: 165, defense: 114, description: 'From Joseph’s Junior Vice President campaign video.' },
+       { name: 'Sami', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/Sami.jpg', attack: 113, defense: 162, description: 'Commonly confused for Samuel L. Jackson. Rotated 180 degrees for dramatic effect.' }, 
+       { name: 'Silly Guy', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/SillyGuy.png', attack: 78, defense: 170, description: '- Some silly guy. Created by Joseph' }, 
+       { name: 'Group Bonding', rarity: 'junior', attack: 170, defense: 160, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
+       { name: 'Freshman Jamey', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/JameyAndBeatrice.png', attack: 114, defense: 215, description: ' THE Dragon James himself, but when he was a freshman, both his brain cells were already in a fierce battle for top 10. ' },
+       { name: 'Group Bonding', rarity: 'junior', attack: 117, defense: 141, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
+       { name: 'Group Bonding', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/GroupBonding.JPG', attack: 207, defense: 166, description: 't’s like Stand by Me but instead of searching for a dead boy they’re searching for a dead car.' },
+       { name: 'The Tunnel Gang ', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/TheTunnelGang.PNG', attack: 213, defense: 247, description: ' It’s like Stand by Me but instead of walking on the train tracks they’re walking through the sewer.' },
+       { name: 'Please Jamey I Need This', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/JameyNeedThis.png', attack: 242, defense: 131, description: ' PLEASE JAMEY I NEEEEEEEEEEEED THIS' },
+       { name: '2 Best Buds', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/BestBuds.png', attack: 220, defense: 294, description: '  Despite differences, they still find the ability to become the bestest of buds. So very inspirational.' },
+       { name: 'Coworkers', rarity: 'superSenior', attack: 316, defense: 460, description: '  Nick didn’t consent to this photo. Daniel laughed.' },
     ],
   },
   {
@@ -66,46 +72,40 @@ const CASES = [
     image: 'images/rt1Crate.png',
     flavor: 'RT1 focused. May the odds be with you.  ',
     items: [
-      { name: 'Morning Announcement Misfire', rarity: 'freshman', attack: 49, defense: 31, description: 'A small glitch that bought itself a lot of attention.' },
-      { name: 'Building Tour Speedrun', rarity: 'sophomore', attack: 68, defense: 57, description: 'Every hall, every shortcut, zero time to explain any of it.' },
-      { name: 'Iconic Places Deluxe', rarity: 'junior', attack: 112, defense: 99, description: 'The upgraded location card for players chasing stronger boards.' },
-      { name: 'Hallway Crowd Control', rarity: 'junior', attack: 87, defense: 103, description: 'A defensive card born from absolute chaos.' },
-      { name: 'Building Lore Compendium', rarity: 'senior', attack: 125, defense: 138, description: 'All the context, all the references, none of the filler.' },
-      { name: 'Iconic Events Marathon', rarity: 'senior', attack: 144, defense: 127, description: 'A greatest-hits card with heavy staying power.' },
-      { name: 'Alex Frieders', rarity: 'freshman', attack: 35, defense: 48, description: ' Freaky ahh junior.' },
-      { name: 'AB', rarity: 'freshman', attack: 53, defense: 40, description: 'No one knows what it stands for. Could possibly stand for A B-Junior' },
-      { name: 'Anna Moore', rarity: 'freshman', attack: 41, defense: 27, description: 'Boy scout, knows some Japanese. Junior' },
-      { name: 'Christian', rarity: 'freshman', attack: 46, defense: 36, description: 'The day the hallway became a full production set.' },
-      { name: 'Darsh', rarity: 'freshman', attack: 57, defense: 44, description: ' Leader of the Vending Machine Scandal of ‘24. Junior.' },
-      { name: 'Eris Thompson', rarity: 'freshman', attack: 33, defense: 51, description: 'Cooler twin. Also a junior.' },
-      { name: 'Henry Short', rarity: 'freshman', attack: 50, defense: 39, description: 'Short junior, wakeID is heshort.' },
-      { name: 'Iniya', rarity: 'freshman', attack: 42, defense: 46, description: 'Was once a Hufflepuff, is now a Ravenclaw. Junior.' },
-      { name: 'Iremide', rarity: 'freshman', attack: 37, defense: 54, description: 'The day the hallway became a full production set.' },
-      { name: 'Jalen', rarity: 'freshman', attack: 48, defense: 30, description: 'The day the hallway became a full production set.' },
+      { name: 'Morning Announcement Misfire', rarity: 'freshman', attack: 51, defense: 53, description: 'A small glitch that bought itself a lot of attention.' },
+      { name: 'Building Tour Speedrun', rarity: 'sophomore', attack: 70, defense: 133, description: 'Every hall, every shortcut, zero time to explain any of it.' },
+      { name: 'Hallway Crowd Control', rarity: 'junior', attack: 202, defense: 84, description: 'A defensive card born from absolute chaos.' },
+      { name: 'Building Lore Compendium', rarity: 'senior', attack: 240, defense: 131, description: 'All the context, all the references, none of the filler.' },
+      { name: 'Alex Frieders', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AlexFrieders.png', attack: 19, defense: 42, description: ' Freaky ahh junior.' },
+      { name: 'AB', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AB.png', attack: 32, defense: 62, description: 'No one knows what it stands for. Could possibly stand for A B-Junior' },
+      { name: 'Anna Moore', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AnnaMoore.PNG', attack: 39, defense: 55, description: 'Boy scout, knows some Japanese. Junior' },
+      { name: 'Christian', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Christian.png', attack: 51, defense: 45, description: 'The day the hallway became a full production set.' },
+      { name: 'Darsh', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Darsh.png', attack: 78, defense: 50, description: ' Leader of the Vending Machine Scandal of ‘24. Junior.' },
+      { name: 'Eris Thompson', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/ErisThompson.png', attack: 88, defense: 73, description: 'Cooler twin. Also a junior.' },
+      { name: 'Henry Short', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/HenryShort.png', attack: 89, defense: 77, description: 'Short junior, wakeID is heshort.' },
+      { name: 'Iniya', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iniya.png', attack: 44, defense: 27, description: 'Was once a Hufflepuff, is now a Ravenclaw. Junior.' },
+      { name: 'Iremide', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iremide.png', attack: 24, defense: 29, description: 'The day the hallway became a full production set.' },
+    
 
-      { name: 'Nicholas Foles', rarity: 'freshman', attack: 55, defense: 43, description: ' THE PRESIDENT, El Presidente himself, Lebron’s idol, cutie patooty. Also a junior' },
-      { name: 'Noah Couch', rarity: 'freshman', attack: 40, defense: 35, description: 'The day the hallway became a full production set.' },
-      { name: 'Rafal Toberek', rarity: 'freshman', attack: 47, defense: 50, description: ' Polish, Mexican, left-handed, & racist. Also a junior.' },
-      { name: 'Ryan Shutte', rarity: 'freshman', attack: 34, defense: 42, description: 'The day the hallway became a full production set.' },
-      { name: 'Serena', rarity: 'freshman', attack: 51, defense: 38, description: ' Owns a 3DS and plays Luigi’s Mansion. Junior' },
-      { name: 'Treyvon Pearson ', rarity: 'freshman', attack: 44, defense: 45, description: 'The day the hallway became a full production set.' },
-      { name: 'Jamey Brandon ', rarity: 'freshman', attack: 39, defense: 53, description: ' THE Dragon James himself, both his brain cells are in a fierce battle for top 10. Junior.' },
-      { name: 'Beatrice Kovalik', rarity: 'freshman', attack: 58, defense: 32, description: '  Ballet ahh junior. ' },
-      { name: 'Gatorade Machine RT1', rarity: 'sophomore', attack: 77, defense: 64, description: '  Is called the Gatorade Machine yet does not possess any Gatorade' },
-      { name: 'Poppi Machine ', rarity: 'sophomore', attack: 62, defense: 83, description: ' Everyone loves Poppi, right? Guys?' },
-      { name: 'Grand Library RT1 ', rarity: 'sophomore', attack: 81, defense: 71, description: ' Not really a library, more like a bunch of chairs in a room. Saw some dude named Peter disappear into a door once here.' },
-      { name: 'JoJo’s', rarity: 'sophomore', attack: 56, defense: 78, description: '- Jamey thinks he’s a JoJo character. We don’t have the heart to tell him otherwise.' },
-      { name: 'Sustenance ', rarity: 'sophomore', attack: 69, defense: 58, description: 'Food is important. I think, at least. I’m like 80% sure.' },
-      { name: 'Uno  ', rarity: 'sophomore', attack: 75, defense: 66, description: ' The world-famous game that has split friendships, split nations, and split worlds' },
-      { name: 'Gardner Pizza', rarity: 'junior', attack: 99, defense: 109, description: 'The pizza as requested per Mr. Gardner. In the making of this… creation, I had to fend off several demons because they thought I was summoning something with how odd the pizza was.' },
-      { name: 'Jamey Geeked', rarity: 'junior', attack: 104, defense: 95, description: 'Jamey straight geekin’ in the elevator.' },
-      { name: 'Mrs. Whittington', rarity: 'superSenior', attack: 166, defense: 149, description: ' The OGs remember Earth Environmental Science class with her.' },
-      { name: 'Gardner White', rarity: 'senior', attack: 131, defense: 142, description: '  Gardnuh, we need to code.   ' },
-      { name: 'Zest', rarity: 'senior', attack: 148, defense: 121, description: ' Normal Jamey.' },
-      { name: 'Brotherly Love', rarity: 'senior', attack: 119, defense: 151, description: ' - Blood siblings showing their passionate love for each other.' },
+      { name: 'Nicholas Foles', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/NicholasFoles.PNG', attack: 40, defense: 68, description: ' THE PRESIDENT, El Presidente himself, Lebron’s idol, cutie patooty. Also a junior' },
+      { name: 'Treyvon Pearson ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/TreyvonPearson.png', attack: 83, defense: 31, description: 'The day the hallway became a full production set.' },
+      { name: 'Jamey Brandon ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/JameyBrandon.PNG', attack: 62, defense: 50, description: ' THE Dragon James himself, both his brain cells are in a fierce battle for top 10. Junior.' },
+      { name: 'Beatrice Kovalik', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Beatrice.png', attack: 39, defense: 82, description: '  Ballet ahh junior. ' },
+      { name: 'Gatorade Machine RT1', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/GatoradeMachineRT1.JPG', attack: 46, defense: 128, description: '  Is called the Gatorade Machine yet does not possess any Gatorade' },
+      { name: 'Poppi Machine ', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/GatoradeMachineRT1.JPG', attack: 129, defense: 38, description: ' Everyone loves Poppi, right? Guys?' },
+      { name: 'Grand Library RT1 ', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/GrandLibaryRT1.JPG', attack: 133, defense: 59, description: ' Not really a library, more like a bunch of chairs in a room. Saw some dude named Peter disappear into a door once here.' },
+      { name: 'JoJo’s', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/Jojos.png', attack: 132, defense: 81, description: '- Jamey thinks he’s a JoJo character. We don’t have the heart to tell him otherwise.' },
+      { name: 'Sustenance ', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/Sustenance.JPG', attack: 93, defense: 75, description: 'Food is important. I think, at least. I’m like 80% sure.' },
+      { name: 'Uno  ', rarity: 'sophomore', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Sophomore/Uno.png', attack: 60, defense: 62, description: ' The world-famous game that has split friendships, split nations, and split worlds' },
+      { name: 'Gardner Pizza', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/GardnerPizza.JPG', attack: 197, defense: 74, description: 'The pizza as requested per Mr. Gardner. In the making of this… creation, I had to fend off several demons because they thought I was summoning something with how odd the pizza was.' },
+      { name: 'Jamey Geeked', rarity: 'junior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Junior/Geeked.png', attack: 158, defense: 105, description: 'Jamey straight geekin’ in the elevator.' },
+      { name: 'Mrs. Whittington', rarity: 'superSenior', attack: 420, defense: 405, description: ' The OGs remember Earth Environmental Science class with her.' },
+      { name: 'Gardner White', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/GardnerWhite.png', attack: 277, defense: 300, description: '  Gardnuh, we need to code.   ' },
+      { name: 'Zest', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/Zest.png', attack: 294, defense: 227, description: ' Normal Jamey.' },
+      { name: 'Brotherly Love', rarity: 'senior', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Senior/BrotherlyLove.PNG', attack: 197, defense: 190, description: ' - Blood siblings showing their passionate love for each other.' },
 
-      { name: 'Please Mr. Gardner I Need This', rarity: 'superSenior', attack: 153, defense: 168, description: 'Why you trying not to laugh Mr. Gardner, thats mad disrespectful' },
-      { name: 'Walk em Down Gardner', rarity: 'superSenior', attack: 178, defense: 143, description: ' Da big Gardner don play wit you son, ya mess wih ‘im, you mess wit da gang twin' },
+      { name: 'Please Mr. Gardner I Need This', rarity: 'superSenior', attack: 359, defense: 362, description: 'Why you trying not to laugh Mr. Gardner, thats mad disrespectful' },
+      { name: 'Walk em Down Gardner', rarity: 'superSenior', attack: 322, defense: 316, description: ' Da big Gardner don play wit you son, ya mess wih ‘im, you mess wit da gang twin' },
 
     ],
   },
@@ -115,30 +115,29 @@ const CASES = [
     image: 'images/WakeTechCrate (1).png',
     flavor: 'A case of Wake Tech... A secret card may be held',
     items: [
-      { name: 'Reg Thiago-Ramos ', rarity: 'freshman', attack: 136, defense: 121, description: ' Aura. (junior)' },
-      { name: 'Alex Frieders', rarity: 'freshman', attack: 35, defense: 48, description: ' Freaky ahh junior.' },
-      { name: 'AB', rarity: 'freshman', attack: 53, defense: 40, description: 'No one knows what it stands for. Could possibly stand for A B-Junior' },
-      { name: 'Anna Moore', rarity: 'freshman', attack: 41, defense: 27, description: 'Boy scout, knows some Japanese. Junior' },
-      { name: 'Christian', rarity: 'freshman', attack: 46, defense: 36, description: 'The day the hallway became a full production set.' },
-      { name: 'Darsh', rarity: 'freshman', attack: 57, defense: 44, description: ' Leader of the Vending Machine Scandal of ‘24. Junior.' },
-      { name: 'Eris Thompson', rarity: 'freshman', attack: 33, defense: 51, description: 'Cooler twin. Also a junior.' },
-      { name: 'Henry Short', rarity: 'freshman', attack: 50, defense: 39, description: 'Short junior, wakeID is heshort.' },
-      { name: 'Iniya', rarity: 'freshman', attack: 42, defense: 46, description: 'Was once a Hufflepuff, is now a Ravenclaw. Junior.' },
-      { name: 'Iremide', rarity: 'freshman', attack: 37, defense: 54, description: 'The day the hallway became a full production set.' },
-      { name: 'Jalen', rarity: 'freshman', attack: 48, defense: 30, description: 'The day the hallway became a full production set.' },
+      { name: 'Reg Thiago-Ramos ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/RegRamos.png', attack: 14, defense: 14, description: ' Aura. (junior)' },
+      { name: 'Alex Frieders', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AlexFrieders.png', attack: 26, defense: 16, description: ' Freaky ahh junior.' },
+      { name: 'AB', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AB.png', attack: 86, defense: 70, description: 'No one knows what it stands for. Could possibly stand for A B-Junior' },
+      { name: 'Anna Moore', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/AnnaMoore.PNG', attack: 57, defense: 72, description: 'Boy scout, knows some Japanese. Junior' },
+      { name: 'Christian', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Christian.png', attack: 24, defense: 75, description: 'The day the hallway became a full production set.' },
+      { name: 'Darsh', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Darsh.png', attack: 88, defense: 65, description: ' Leader of the Vending Machine Scandal of ‘24. Junior.' },
+      { name: 'Eris Thompson', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/ErisThompson.png', attack: 24, defense: 50, description: 'Cooler twin. Also a junior.' },
+      { name: 'Henry Short', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/HenryShort.png', attack: 19, defense: 64, description: 'Short junior, wakeID is heshort.' },
+      { name: 'Iniya', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iniya.png', attack: 71, defense: 60, description: 'Was once a Hufflepuff, is now a Ravenclaw. Junior.' },
+      { name: 'Iremide', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Iremide.png', attack: 15, defense: 41, description: 'The day the hallway became a full production set.' },
+      { name: 'Jalen', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Jalen.png', attack: 35, defense: 20, description: 'The day the hallway became a full production set.' },
 
-      { name: 'Nicholas Foles', rarity: 'freshman', attack: 55, defense: 43, description: ' THE PRESIDENT, El Presidente himself, Lebron’s idol, cutie patooty. Also a junior' },
-      { name: 'Noah Couch', rarity: 'freshman', attack: 40, defense: 35, description: 'The day the hallway became a full production set.' },
-      { name: 'Rafal Toberek', rarity: 'freshman', attack: 47, defense: 50, description: ' Polish, Mexican, left-handed, & racist. Also a junior.' },
-      { name: 'Ryan Shutte', rarity: 'freshman', attack: 34, defense: 42, description: 'The day the hallway became a full production set.' },
-      { name: 'Serena', rarity: 'freshman', attack: 51, defense: 38, description: ' Owns a 3DS and plays Luigi’s Mansion. Junior' },
-      { name: 'Treyvon Pearson ', rarity: 'freshman', attack: 44, defense: 45, description: 'The day the hallway became a full production set.' },
-      { name: 'Jamey Brandon ', rarity: 'freshman', attack: 39, defense: 53, description: ' THE Dragon James himself, both his brain cells are in a fierce battle for top 10. Junior.' },
-      { name: 'Beatrice Kovalik', rarity: 'freshman', attack: 58, defense: 32, description: '  Ballet ahh junior. ' },
-      { name: 'Emilia Fisher', rarity: 'freshman', attack: 52, defense: 41, description: ' Duck. Junior.' },
-      { name: 'Jacob Hartzell', rarity: 'freshman', attack: 38, defense: 29, description: ' Jacob Hartzell is a cutie patooty junior. ' },
-      { name: 'Reg Thiago-Ramos ', rarity: 'freshman', attack: 44, defense: 47, description: ' Aura. (junior)' },
-      { name: 'Anne Frank ', rarity: 'superSenior', attack: 11862, defense: 9627, description: ' Aura. (junior)' },
+      { name: 'Nicholas Foles', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/NicholasFoles.PNG', attack: 75, defense: 13, description: ' THE PRESIDENT, El Presidente himself, Lebron’s idol, cutie patooty. Also a junior' },
+      { name: 'Noah Couch', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/NoahCouch.png', attack: 67, defense: 18, description: 'The day the hallway became a full production set.' },
+      { name: 'Rafal Toberek', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Rafal.png', attack: 47, defense: 19, description: ' Polish, Mexican, left-handed, & racist. Also a junior.' },
+      { name: 'Serena', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/SerenaRogers.png', attack: 31, defense: 54, description: ' Owns a 3DS and plays Luigi’s Mansion. Junior' },
+      { name: 'Treyvon Pearson ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/TreyvonPearson.png', attack: 71, defense: 86, description: 'The day the hallway became a full production set.' },
+      { name: 'Jamey Brandon ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/JameyBrandon.PNG', attack: 55, defense: 31, description: ' THE Dragon James himself, both his brain cells are in a fierce battle for top 10. Junior.' },
+      { name: 'Beatrice Kovalik', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/Beatrice.png', attack: 75, defense: 63, description: '  Ballet ahh junior. ' },
+      { name: 'Emilia Fisher', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/EmiliaFisher.png', attack: 37, defense: 74, description: ' Duck. Junior.' },
+      { name: 'Jacob Hartzell', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/JacobHartzell.png', attack: 63, defense: 57, description: ' Jacob Hartzell is a cutie patooty junior. ' },
+      { name: 'Reg Thiago-Ramos ', rarity: 'freshman', image: 'Images/Photos-20260424T155820Z-3-001/Photos/Freshman/RegRamos.png', attack: 42, defense: 64, description: ' Aura. (junior)' },
+      { name: 'Anne Frank ', rarity: 'superSenior', attack: 236, defense: 337, description: ' Aura. (junior)' },
       
     ],
   },
@@ -217,7 +216,6 @@ function renderCardMarkup(card, options = {}) {
           <span>ATK ${safeCard.attack}</span>
           <span>DEF ${safeCard.defense}</span>
         </div>
-      </div>
     </article>
   `;
 }
@@ -225,11 +223,13 @@ function renderCardMarkup(card, options = {}) {
 function renderRouletteItemMarkup(card) {
   const safeCard = enrichCard(card);
   const templateImg = RARITIES[safeCard.rarityKey].templateImage;
+  const cardImg = safeCard.image || '';
 
   return `
     <div class="item-icon" aria-hidden="true">${initialsFromName(safeCard.name)}</div>
     <div class="item-name">${safeCard.name}</div>
     <img class="item-template" src="${templateImg}" alt="${safeCard.rarityLabel}" aria-hidden="true">
+    <img class="item-card-img" src="${cardImg}" alt="" aria-hidden="true" onerror="this.style.display='none'">
   `;
 }
 
@@ -430,4 +430,3 @@ backBtn.addEventListener('click', () => {
 renderCases();
 updateDashboard();
 window.setInterval(updateDashboard, 1000);
-
