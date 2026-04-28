@@ -302,16 +302,19 @@ function renderCases() {
   CASES.forEach((caseData, index) => {
     const caseCard = document.createElement('button');
     caseCard.type = 'button';
-    caseCard.className = 'case-card';
+    // Ensure both classes are present
+    caseCard.className = 'case-card glow-cyan'; 
     caseCard.innerHTML = `
-      <img class="case-icon" src="${caseData.image}" alt="${caseData.name}">
+      <div class="case-image-wrap">
+        <img class="case-icon" src="${caseData.image}" alt="${caseData.name}">
+      </div>
       <div class="case-card-copy">
         <h3>${caseData.name}</h3>
         <p>${caseData.flavor}</p>
       </div>
       <div class="case-card-meta">
-        <span>${caseData.price} PP</span>
-        <span>${caseData.items.length} cards</span>
+        <span class="tag-pill">${caseData.price} PP</span>
+        <span class="tag-pill">${caseData.items.length} cards</span>
       </div>
     `;
     caseCard.addEventListener('click', () => selectCase(index));

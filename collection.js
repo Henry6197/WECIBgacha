@@ -19,7 +19,7 @@ const incomeRateEl = document.getElementById('incomeRate');
 const collectionGridEl = document.getElementById('collectionGrid');
 const collectionEmptyEl = document.getElementById('collectionEmpty');
 const collectionSummaryEl = document.getElementById('collectionSummary');
-const resetProgressBtn = document.getElementById('resetProgressBtn');
+const resetFiltersBtn = document.getElementById('resetFiltersBtn');
 const searchInput = document.getElementById('searchInput');
 const rarityFilter = document.getElementById('rarityFilter');
 const dateSort = document.getElementById('dateSort');
@@ -190,13 +190,14 @@ searchInput.oninput = renderCollection;
 rarityFilter.onchange = renderCollection;
 dateSort.onchange = renderCollection;
 
-resetProgressBtn.onclick = () => {
+resetFiltersBtn.onclick = () => {
     searchInput.value = '';
     rarityFilter.value = 'all';
-    dateSort.value = 'newest';
+    dateSort.value = 'rarityDesc';
     renderCollection();
 };
 
+dateSort.value = 'rarityDesc';
 updateDashboard();
 renderCollection();
 setInterval(updateDashboard, 1000);

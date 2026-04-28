@@ -155,7 +155,7 @@ function getBalance() {
 
 function getPassiveIncomePerHour() {
   return getGameState().inventory.reduce((sum, card) => {
-    return sum + (PASSIVE_PP_RATES[normalizeStoredRarity(card.rarityKey)] || 0);
+    return (sum + (PASSIVE_PP_RATES[normalizeStoredRarity(card.rarityKey)])/60 || 0);
   }, 0);
 }
 

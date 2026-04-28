@@ -18,77 +18,85 @@
 </head>
 <body>
   <div id="app">
-    <nav class="top-nav">
-      <a class="nav-link is-active" href="index.html">Case Opener</a>
-      <a class="nav-link" href="collection.html">Collection</a>
+    <nav class="nav-container">
+        <div class="nav-pill">
+            <a class="nav-link is-active" href="index.html">Case Opener</a>
+            <a class="nav-link" href="collection.html">Collection</a>
+        </div>
     </nav>
 
-    <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">WECIBGacha</p>
-        <h1>Earnings</h1>
-      </div>
+    <header class="hero-grid">
+        <section class="hero-banner glow-cyan">
+            <p class="eyebrow">WECIBGacha</p>
+            <h1>Earnings</h1>
+            <div class="hero-accent-left"></div>
+            <div class="hero-accent-right"></div>
+        </section>
 
-      <div class="hero-stats">
-        <article class="stat-card accent-red">
-          <span class="stat-label">PP Balance</span>
-          <strong id="balance">120.00</strong>
-        </article>
-        <article class="stat-card accent-gold">
-          <span class="stat-label">Collection Size</span>
-          <strong id="inventoryCount">0</strong>
-        </article>
-        <article class="stat-card accent-blue">
-          <span class="stat-label">Passive Rate</span>
-          <strong><span id="incomeRate">0.00</span> PP/hr</strong>
-        </article>
-      </div>
+        <div class="stats-column">
+            <article class="stat-card glow-cyan">
+                <div class="stat-icon-wrap">₿</div>
+                <div class="stat-info">
+                    <span class="stat-label">PP Balance</span>
+                    <strong id="balance">0.00</strong>
+                </div>
+            </article>
+            <article class="stat-card glow-cyan">
+                <div class="stat-icon-wrap">🀆</div>
+                <div class="stat-info">
+                    <span class="stat-label">Collection Size</span>
+                    <strong id="inventoryCount">0</strong>
+                </div>
+            </article>
+            <article class="stat-card glow-cyan">
+                <div class="stat-icon-wrap">$</div>
+                <div class="stat-info">
+                    <span class="stat-label">Passive Rate</span>
+                    <strong><span id="incomeRate">0.00</span> PP/hr</strong>
+                </div>
+            </article>
+        </div>
     </header>
 
     <main class="dashboard">
-      <section class="panel case-select">
-        <div class="panel-header">
-          <h2>Cases</h2>
-          <p>Choose a case to view its pool and open it with PPs.</p>
-        </div>
-        <div class="cases" id="cases"></div>
-      </section>
+        <section class="panel case-select glow-cyan">
+            <div class="panel-header search-controls">
+                <h2>Cases</h2>
+                <p class="italic-muted">Choose a case to view its pool and open it with PPs.</p>
+            </div>
+            <div class="cases-grid" id="cases"></div>
+        </section>
 
-      <section class="panel opener-section" id="openerSection" hidden>
-        <div class="panel-header split-header">
-          <div>
-            <h2 id="selectedCaseName"></h2>
-            <p id="selectedCaseFlavor" class="case-flavor"></p>
-          </div>
-          <div class="selected-case-meta">
-            <span>Price: <strong><span id="selectedCasePrice"></span> PP</strong></span>
-          </div>
-        </div>
+        <section class="panel opener-section" id="openerSection" hidden>
+            <div class="opener-header">
+                <h2 id="selectedCaseName"></h2>
+                <p id="selectedCaseFlavor" class="case-flavor"></p>
+                <div class="price-pill">Price: <span id="selectedCasePrice"></span> PP</div>
+            </div>
 
-        <div class="drop-rates-wrap">
-          <h3>Drop Rates</h3>
-          <div class="drop-rates" id="dropRates"></div>
-        </div>
+            <div class="drop-rates-wrap">
+                <div class="drop-rates" id="dropRates"></div>
+            </div>
 
-        <p class="status-message" id="statusMessage">Pick a case to start opening.</p>
+            <p class="status-message" id="statusMessage">Pick a case to start opening.</p>
 
-        <div class="roulette-container">
-          <div class="roulette-marker"></div>
-          <div class="roulette-strip" id="rouletteStrip"></div>
-        </div>
+            <div class="roulette-container">
+                <div class="roulette-marker"></div>
+                <div class="roulette-strip" id="rouletteStrip"></div>
+            </div>
 
-        <div class="controls">
-          <button id="openBtn" class="btn btn-open">Open Case</button>
-          <button id="backBtn" class="btn btn-back">Back To Cases</button>
-        </div>
+            <div class="controls centered-controls">
+                <button id="openBtn" class="btn btn-open">Open Case</button>
+                <button id="backBtn" class="btn btn-secondary">Back To Cases</button>
+            </div>
 
-        <div class="won-item" id="wonItem" hidden>
-          <h3>Latest Pull</h3>
-          <div class="won-item-card" id="wonItemCard"></div>
-        </div>
-      </section>
+            <div class="won-item" id="wonItem" hidden>
+                <h3>Latest Pull</h3>
+                <div class="won-item-card" id="wonItemCard"></div>
+            </div>
+        </section>
     </main>
-  </div>
+</div>
   <script src="storage.js"></script>
   <script src="case.js"></script>
 </body>
