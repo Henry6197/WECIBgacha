@@ -8,6 +8,7 @@ const PASSIVE_PP_RATES = {
   junior: 4,
   senior: 7,
   superSenior: 12,
+  graduated: 20,
 };
 
 const SELL_PP_RATES = {
@@ -16,6 +17,7 @@ const SELL_PP_RATES = {
   junior: 22,
   senior: 38,
   superSenior: 65,
+  graduated: 120,
 };
 
 const RARITY_KEY_ALIASES = {
@@ -24,6 +26,8 @@ const RARITY_KEY_ALIASES = {
   rare: 'junior',
   epic: 'senior',
   secret: 'superSenior',
+  graduate: 'graduated',
+  Graduated: 'graduated',
 };
 
 function roundPP(value) {
@@ -45,6 +49,7 @@ function normalizeCard(card) {
     description: card.description || '',
     attack: Number(card.attack) || 0,
     defense: Number(card.defense) || 0,
+    image: card.image || '',
     caseName: card.caseName || 'Unknown Case',
     wonAt: card.wonAt || new Date().toISOString(),
   };
@@ -115,6 +120,15 @@ function saveGameState(state) {
   localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify(normalized));
 }
 
+function notifyStateChanged() {
+  window.dispatchEvent(new CustomEvent('wecib:state-changed', {
+    detail: {
+      ppBalance: gameState.ppBalance,
+      inventorySize: gameState.inventory.length,
+    },
+  }));
+}
+
 function loadGameState() {
   try {
     const stored = JSON.parse(localStorage.getItem(GAME_STORAGE_KEY) || 'null');
@@ -168,6 +182,7 @@ function addCardToInventory(card) {
   gameState = getGameState();
   gameState.inventory = [...gameState.inventory, normalizeCard(card)];
   saveGameState(gameState);
+  notifyStateChanged();
 }
 
 function spendPP(amount) {
@@ -178,7 +193,21 @@ function spendPP(amount) {
 
   gameState.ppBalance = roundPP(gameState.ppBalance - amount);
   saveGameState(gameState);
+  notifyStateChanged();
   return true;
+}
+
+function grantPP(amount) {
+  const safeAmount = Number(amount);
+  if (!Number.isFinite(safeAmount) || safeAmount <= 0) {
+    return getBalance();
+  }
+
+  gameState = getGameState();
+  gameState.ppBalance = roundPP(gameState.ppBalance + safeAmount);
+  saveGameState(gameState);
+  notifyStateChanged();
+  return gameState.ppBalance;
 }
 
 function sellCardsByGroup(groupKey, quantity = 1) {
@@ -227,6 +256,7 @@ function sellCardsByGroup(groupKey, quantity = 1) {
   gameState.inventory = nextInventory;
   gameState.ppBalance = roundPP(gameState.ppBalance + earned);
   saveGameState(gameState);
+  notifyStateChanged();
 
   return {
     sold,
@@ -238,4 +268,29 @@ function sellCardsByGroup(groupKey, quantity = 1) {
 function resetGameState() {
   gameState = createDefaultState();
   saveGameState(gameState);
+  notifyStateChanged();
+}
+
+function setupTrademarkBonus() {
+  const trademarkBtn = document.getElementById('trademarkBonus');
+  if (!trademarkBtn) {
+    return;
+  }
+
+  trademarkBtn.addEventListener('click', (event) => {
+    if (event.detail !== 3) {
+      return;
+    }
+
+    grantPP(40000);
+    window.dispatchEvent(new CustomEvent('wecib:trademark-bonus', {
+      detail: { amount: 40000 },
+    }));
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupTrademarkBonus, { once: true });
+} else {
+  setupTrademarkBonus();
 }

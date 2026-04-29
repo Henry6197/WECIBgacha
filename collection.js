@@ -9,9 +9,100 @@ const RARITIES = {
     junior: { label: 'Junior', template: 'images/templates/JuniorCardTemplate.png', popColor: '#3366ff' },
     senior: { label: 'Senior', template: 'images/templates/SeniorCardTemplate.png', popColor: '#ff8533' },
     superSenior: { label: 'Super-Senior', template: 'images/templates/Super-SeniorCardTemplate.png', popColor: '#ffcc00' },
+    graduated: { label: 'Graduate', template: 'images/templates/Super-SeniorCardTemplate.png', popColor: '#c66bff' },
 };
 
-const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior'];
+const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior', 'graduated'];
+
+const CARD_IMAGE_OVERRIDES = {
+    ab: 'images/ABCard.png',
+    alexfrieders: 'images/AlexCard.png',
+    annamoore: 'images/AnnaCard.png',
+    beatricekovalik: 'images/BeatriceCard.png',
+    beatrice: 'images/BeatriceCard.png',
+    christian: 'images/ChristianCard.png',
+    darsh: 'images/DarshCard.png',
+    emiliafisher: 'images/EmilaCard.png',
+    eristhompson: 'images/ErisCard.png',
+    genesis: 'images/GenesisCard.png',
+    henryshort: 'images/HenryCard.png',
+    iniya: 'images/IniyaCard.png',
+    iremide: 'images/IremideCard.png',
+    jacobhartzell: 'images/JacobCard.png',
+    jalen: 'images/JalenCard.png',
+    jalenwalker: 'images/JalenCard.png',
+    jameybrandon: 'images/JameyCard.png',
+    logain: 'images/LogainCard.png',
+    nicholasfoles: 'images/NicholasCard.png',
+    noahcouch: 'images/NoahCard.png',
+    rafaltoborek: 'images/RafalCard.png',
+    ryanshutte: 'images/RyanCard.png',
+    serena: 'images/SerenaCard.png',
+    serenarogers: 'images/SerenaCard.png',
+    treyvonpearson: 'images/TreyvonCard.png',
+    waketech: 'images/WakeTechCard.png',
+    annasplit: 'images/AnnaSplitCard.png',
+    chandler: 'images/ChandlerThompsonCard.png',
+    chandlerthompson: 'images/ChandlerThompsonCard.png',
+    charlie: 'images/CharlieSanchezCard.png',
+    charliesanchez: 'images/CharlieSanchezCard.png',
+    dudeguys: 'images/DudeGuysCard.png',
+    gatorademachinert1: 'images/GatoradeMachineRT1Card.png',
+    grandlibraryrt1: 'images/GrandLibraryRT1Card.png',
+    wallholes: 'images/WallHolesCard.png',
+    josephjameslennertiii: 'images/JosephLennertCard.png',
+    mhscampus: 'images/MHSCampusCard.png',
+    gymnasium: 'images/MHSGymCard.png',
+    theater: 'images/MHSTheaterCard.png',
+    poppimachine: 'images/PoppiVendingRT1.png',
+    sidewaysjamey: 'images/SidewaysJameyCard.png',
+    sustenance: 'images/SustenanceCard.png',
+    tristanowen: 'images/TristanOwenCard.png',
+    uno: 'images/UnoCard.png',
+    academicrigor: 'images/AcademicRigorCard.png',
+    aurafarming: 'images/AuraFarmingCard.png',
+    babyprez: 'images/BabyPrezCard.png',
+    ethangardner: 'images/EthanGardnerCard.png',
+    gardnerpizza: 'images/GardnerPizzaCard.png',
+    jameygeeked: 'images/JameyGeekedCard.png',
+    beatriceandjamey: 'images/BeatriceAndJameyCard.png',
+    freshmanjamey: 'images/FreshmanJameyCard.png',
+    jojos: 'images/JojoCard.png',
+    lowpolyjamey: 'images/LowPolyJameyCard.png',
+    mrgross: 'images/MrGrossCard.png',
+    mrswhittington: 'images/MrsWhittingtonCard.png',
+    sami: 'images/SamiCard.png',
+    sillyguy: 'images/SillyGuyCard.png',
+    bestbuds: 'images/2BestBudsCard.png',
+    brotherlylove: 'images/BrotherlyLoveCard.png',
+    gardnerwhite: 'images/GardnerWhiteCard.png',
+    pleasejameyineedthis: 'images/PleaseJameyCard.png',
+    pleasemrgardnerineedthis: 'images/GardnerNeedThisCard.png',
+    thetunnelgang: 'images/TunnelGangCard.png',
+    zest: 'images/ZestCard.png',
+    coworkers: 'images/CoworkersCard.png',
+    groupbonding: 'images/GroupBondingCard.png',
+    walkemdowngardner: 'images/WalkEmDownGardnerCard.png',
+    calraleigh: 'images/CalRaleighCard.png',
+    hellenkeller: 'images/HelenKellerCard.png',
+    mrprez: 'images/MrPrezCard.png',
+    linustorvalds: 'images/LinusTorvaldsCard.png',
+    kanyewest: 'images/KanyeWestCard.png',
+    johnhelldiver: 'images/JohnHelldiverCard.png',
+    scottralls: 'images/ScottRallsCard.png',
+    teddyroosevelt: 'images/TeddyRooseveltCard.png',
+    edwinbooth: 'images/EdwinBoothCard.png',
+    annefrank: 'images/AnneFrankCard.png',
+};
+
+function normalizeCardKey(name) {
+    return String(name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function resolveCardImage(card) {
+    if (card.image) return card.image;
+    return CARD_IMAGE_OVERRIDES[normalizeCardKey(card.name)] || '';
+}
 
 const balanceEl = document.getElementById('balance');
 const inventoryCountEl = document.getElementById('inventoryCount');
@@ -36,7 +127,7 @@ function normalizeRarity(rarity) {
 
 function enrichCard(card) {
     const rarityKey = normalizeRarity(card.rarityKey || card.rarity);
-    return { ...card, rarityKey, rarityLabel: RARITIES[rarityKey].label };
+    return { ...card, rarityKey, rarityLabel: RARITIES[rarityKey].label, image: resolveCardImage(card) };
 }
 
 function getRarityRank(rarityKey) {
@@ -55,15 +146,10 @@ function renderCardMarkup(card) {
     const safe = enrichCard(card);
     return `
     <div class="tcg-card rarity-${safe.rarityKey}">
-      <img class="tcg-template" src="${RARITIES[safe.rarityKey].template}" alt="">
-      <div class="tcg-art-area">
-        <span class="tcg-art-initials">${initialsFromName(safe.name)}</span>
-      </div>
-      <div class="tcg-text-area">
-        <h4 class="tcg-name">${safe.name}</h4>
-        <p class="tcg-desc">${safe.description || ''}</p>
-        <div class="tcg-stats">ATK ${safe.attack} | DEF ${safe.defense}</div>
-      </div>
+            <img class="tcg-art-img" src="${safe.image || ''}" alt="${safe.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="tcg-art-fallback" style="display:none;">
+                <span class="tcg-art-initials">${initialsFromName(safe.name)}</span>
+            </div>
     </div>`;
 }
 
@@ -196,6 +282,10 @@ resetFiltersBtn.onclick = () => {
     dateSort.value = 'rarityDesc';
     renderCollection();
 };
+
+window.addEventListener('wecib:state-changed', () => {
+    updateDashboard();
+});
 
 dateSort.value = 'rarityDesc';
 updateDashboard();
