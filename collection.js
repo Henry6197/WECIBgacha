@@ -4,12 +4,12 @@
  */
 
 const RARITIES = {
-    freshman: { label: 'Freshman', template: 'Images/templates/FreshmanCardTemplate.png', popColor: '#4d88ff' },
-    sophomore: { label: 'Sophomore', template: 'Images/templates/SophomoreCardTemplate.png', popColor: '#5cd65c' },
-    junior: { label: 'Junior', template: 'Images/templates/JuniorCardTemplate.png', popColor: '#3366ff' },
-    senior: { label: 'Senior', template: 'Images/templates/SeniorCardTemplate.png', popColor: '#ff8533' },
-    superSenior: { label: 'Super-Senior', template: 'Images/templates/Super-SeniorCardTemplate.png', popColor: '#ffcc00' },
-    graduated: { label: 'Graduate', template: 'Images/templates/Super-SeniorCardTemplate.png', popColor: '#c66bff' },
+    freshman: { label: 'Freshman', popColor: '#4d88ff' },
+    sophomore: { label: 'Sophomore', popColor: '#5cd65c' },
+    junior: { label: 'Junior', popColor: '#3366ff' },
+    senior: { label: 'Senior', popColor: '#ff8533' },
+    superSenior: { label: 'Super-Senior', popColor: '#ffcc00' },
+    graduated: { label: 'Graduate', popColor: '#c66bff' },
 };
 
 const RARITY_ORDER = ['freshman', 'sophomore', 'junior', 'senior', 'superSenior', 'graduated'];
@@ -55,6 +55,8 @@ const CARD_IMAGE_OVERRIDES = {
     gymnasium: 'Images/MHSGymCard.png',
     theater: 'Images/MHSTheaterCard.png',
     poppimachine: 'Images/PoppiVendingRT1.png',
+    poppivendingrt1: 'Images/PoppiVendingRT1.png',
+    jameysideways: 'Images/SidewaysJameyCard.png',
     sidewaysjamey: 'Images/SidewaysJameyCard.png',
     sustenance: 'Images/SustenanceCard.png',
     tristanowen: 'Images/TristanOwenCard.png',
