@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WECIB GACHA Battle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <nav class="nav-container">
+      <div class="nav-pill">
+        <a class="nav-link" href="index.html">Case Opener</a>
+        <a class="nav-link" href="collection.html">Collection</a>
+        <a class="nav-link is-active" href="battle.html">Battle</a>
+      </div>
+    </nav>
+
+    <header class="hero-grid battle-hero-grid">
+      <section class="hero-banner battle-hero glow-cyan">
+        <p class="eyebrow">WECIBGacha</p>
+        <h1>Battle</h1>
+      </section>
+
+      <div class="stats-column">
+        <article class="stat-card glow-cyan">
+          <span class="stat-label">PP Balance</span>
+          <strong id="balance">0.00</strong>
+        </article>
+        <article class="stat-card glow-cyan">
+          <span class="stat-label">Team</span>
+          <strong><span id="teamCount">0</span>/5</strong>
+        </article>
+        <article class="stat-card glow-cyan">
+          <span class="stat-label">Reward</span>
+          <strong id="rewardLabel">5000 PP</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="dashboard battle-dashboard">
+      <section class="panel battle-mode-panel glow-cyan">
+        <div class="panel-header battle-panel-header">
+          <div>
+            <h2>Battle Mode</h2>
+          </div>
+          <div class="battle-mode-toggle" role="group" aria-label="Battle mode">
+            <button class="battle-mode-btn is-active" type="button" data-mode="boss">Boss Battle</button>
+            <button class="battle-mode-btn" type="button" data-mode="deck">5v5 Card Battle</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel battle-builder glow-cyan">
+        <div class="panel-header battle-panel-header">
+          <div>
+            <h2>Team Builder</h2>
+          </div>
+          <div class="battle-actions">
+            <button id="autoTeamBtn" class="btn btn-secondary" type="button">Auto Fill</button>
+            <button id="clearTeamBtn" class="btn btn-secondary" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="battle-team-slots" id="teamSlots"></div>
+
+        <div class="battle-filters">
+          <div class="search-wrapper">
+            <input type="text" id="battleSearchInput" placeholder="Search cards...">
+          </div>
+          <select id="battleRarityFilter" class="filter-select">
+            <option value="all">All Rarities</option>
+            <option value="freshman">Freshman</option>
+            <option value="sophomore">Sophomore</option>
+            <option value="junior">Junior</option>
+            <option value="senior">Senior</option>
+            <option value="superSenior">Super-Senior</option>
+            <option value="graduated">Graduate</option>
+          </select>
+        </div>
+
+        <p class="collection-empty" id="battleEmpty">Open cards to build a battle team.</p>
+        <div class="battle-card-grid" id="battleCardGrid"></div>
+      </section>
+
+      <section class="panel battle-arena glow-cyan">
+        <div class="panel-header battle-panel-header">
+          <div>
+            <h2>Arena</h2>
+          </div>
+          <div class="battle-actions">
+            <button id="startBattleBtn" class="btn btn-open" type="button">Start Battle</button>
+          </div>
+        </div>
+
+        <div class="battle-status" id="battleStatus">Choose cards, then start a battle.</div>
+
+        <div class="battle-field">
+          <article class="battle-combatant" id="playerCombatant"></article>
+          <div class="battle-versus">VS</div>
+          <article class="battle-combatant" id="enemyCombatant"></article>
+        </div>
+
+        <div class="battle-benches">
+          <div>
+            <span class="stat-label">Your Team</span>
+            <div class="battle-bench" id="playerBench"></div>
+          </div>
+          <div>
+            <span class="stat-label" id="enemyBenchLabel">Opponent</span>
+            <div class="battle-bench" id="enemyBench"></div>
+          </div>
+        </div>
+
+        <div class="battle-log" id="battleLog"></div>
+      </section>
+    </main>
+  </div>
+
+  <button id="trademarkBonus" class="trademark-bonus" type="button" aria-label="Trademark bonus trigger">&trade;</button>
+  <script src="storage.js"></script>
+  <script src="battle.js"></script>
+</body>
+</html>
