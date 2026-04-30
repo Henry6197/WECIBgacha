@@ -3,7 +3,7 @@ const RARITIES = {
   sophomore: { label: 'Sophomore', color: '#d9f7c8', accent: '#3b7a2f', weight: 17.8 },
   junior: { label: 'Junior', color: '#b9d4ff', accent: '#1742b8', weight: 12 },
   senior: { label: 'Senior', color: '#ffd3a9', accent: '#b34d13', weight: 3 },
-  graduated: { label: 'Graduate', color: '#8c52ff', accent: '#cb6ce6', weight: 1000.1 },
+  graduated: { label: 'Graduate', color: '#8c52ff', accent: '#cb6ce6', weight: 100.005 },
   superSenior: { label: 'Super-Senior', color: '#ffe48c', accent: '#8b5e00', weight: 0.2 },
 
 };
@@ -297,10 +297,6 @@ const CASES = enforceCaseRules([
     price: 250,
     image: 'Images/WakeTechCrate (1).png',
     flavor: 'A case of Wake Tech... A secret card may be held.',
-    rarityWeights: {
-      freshman: 99,
-      graduated: 1,
-    },
     items: [
       { name: 'AB', rarity: 'freshman' },
       { name: 'Alex Frieders', rarity: 'freshman' },

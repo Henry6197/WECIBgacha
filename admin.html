@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WECIB GACHA Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-wrap {
+      max-width: 760px;
+      margin: 32px auto;
+      padding: 0 16px 32px;
+    }
+
+    .admin-card {
+      background: rgba(10, 14, 24, 0.82);
+      border: 1px solid rgba(125, 180, 255, 0.35);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .admin-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .admin-label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #cde4ff;
+    }
+
+    .admin-input,
+    .admin-select,
+    .admin-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      padding: 10px 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    .admin-input:focus,
+    .admin-select:focus,
+    .admin-textarea:focus {
+      border-color: rgba(116, 192, 252, 0.95);
+      box-shadow: 0 0 0 3px rgba(116, 192, 252, 0.18);
+    }
+
+    .admin-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .admin-status {
+      margin-top: 12px;
+      min-height: 22px;
+      color: #c8ffcd;
+    }
+
+    .admin-status.error {
+      color: #ffb7b7;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .admin-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="admin-wrap">
+    <section id="lockPanel" class="admin-card">
+      <h1>Admin Access</h1>
+      <p>Enter password to unlock card grant tools.</p>
+      <label class="admin-label" for="passwordInput">Password</label>
+      <input class="admin-input" id="passwordInput" type="password" autocomplete="off" spellcheck="false">
+      <div class="admin-actions">
+        <button id="unlockBtn" class="btn btn-open" type="button">Unlock</button>
+      </div>
+      <p id="lockMessage" class="admin-status"></p>
+    </section>
+
+    <section id="adminPanel" class="admin-card hidden">
+      <h2>Grant Card</h2>
+      <p>Create and add any card to your inventory.</p>
+
+      <div style="margin-top: 10px;">
+        <label class="admin-label" for="caseCardPicker">Pick Existing Card (All Cases)</label>
+        <select class="admin-select" id="caseCardPicker">
+          <option value="">Loading case cards...</option>
+        </select>
+        <p id="pickerMessage" class="admin-status"></p>
+      </div>
+
+      <div class="admin-row">
+        <div>
+          <label class="admin-label" for="nameInput">Card Name</label>
+          <input class="admin-input" id="nameInput" type="text" placeholder="Anne Frank">
+        </div>
+        <div>
+          <label class="admin-label" for="caseInput">Case Name</label>
+          <input class="admin-input" id="caseInput" type="text" placeholder="Wake Tech Case">
+        </div>
+      </div>
+
+      <div class="admin-row" style="margin-top: 12px;">
+        <div>
+          <label class="admin-label" for="rarityInput">Rarity</label>
+          <select class="admin-select" id="rarityInput">
+            <option value="freshman">Freshman</option>
+            <option value="sophomore">Sophomore</option>
+            <option value="junior">Junior</option>
+            <option value="senior">Senior</option>
+            <option value="superSenior">Super-Senior</option>
+            <option value="graduated">Graduate</option>
+          </select>
+        </div>
+        <div>
+          <label class="admin-label" for="quantityInput">Quantity</label>
+          <input class="admin-input" id="quantityInput" type="number" min="1" max="500" value="1">
+        </div>
+      </div>
+
+      <div class="admin-row" style="margin-top: 12px;">
+        <div>
+          <label class="admin-label" for="atkInput">ATK</label>
+          <input class="admin-input" id="atkInput" type="number" value="100">
+        </div>
+        <div>
+          <label class="admin-label" for="defInput">DEF</label>
+          <input class="admin-input" id="defInput" type="number" value="100">
+        </div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <label class="admin-label" for="imageInput">Image Path (optional)</label>
+        <input class="admin-input" id="imageInput" type="text" placeholder="Images/AnneFrankCard.png">
+      </div>
+
+      <div style="margin-top: 12px;">
+        <label class="admin-label" for="descriptionInput">Description (optional)</label>
+        <textarea class="admin-textarea" id="descriptionInput" placeholder="The rarest card in the game."></textarea>
+      </div>
+
+      <div class="admin-actions">
+        <button id="grantBtn" class="btn btn-open" type="button">Grant Card(s)</button>
+      </div>
+      <p id="grantMessage" class="admin-status"></p>
+    </section>
+  </div>
+
+  <script src="storage.js"></script>
+  <script>
+    const ADMIN_PASSWORD = 'hufflepuff';
+
+    const lockPanel = document.getElementById('lockPanel');
+    const adminPanel = document.getElementById('adminPanel');
+    const passwordInput = document.getElementById('passwordInput');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const lockMessage = document.getElementById('lockMessage');
+
+    const nameInput = document.getElementById('nameInput');
+    const caseInput = document.getElementById('caseInput');
+    const rarityInput = document.getElementById('rarityInput');
+    const caseCardPicker = document.getElementById('caseCardPicker');
+    const pickerMessage = document.getElementById('pickerMessage');
+    const quantityInput = document.getElementById('quantityInput');
+    const atkInput = document.getElementById('atkInput');
+    const defInput = document.getElementById('defInput');
+    const imageInput = document.getElementById('imageInput');
+    const descriptionInput = document.getElementById('descriptionInput');
+    const grantBtn = document.getElementById('grantBtn');
+    const grantMessage = document.getElementById('grantMessage');
+    let pickerOptions = [];
+
+    function setMessage(node, message, isError) {
+      node.textContent = message;
+      node.classList.toggle('error', Boolean(isError));
+    }
+
+    function unlockAdmin() {
+      const attempt = (passwordInput.value || '').trim();
+      if (attempt !== ADMIN_PASSWORD) {
+        setMessage(lockMessage, 'Wrong password.', true);
+        return;
+      }
+
+      setMessage(lockMessage, 'Access granted.', false);
+      lockPanel.classList.add('hidden');
+      adminPanel.classList.remove('hidden');
+      if (caseCardPicker.options.length <= 1) {
+        loadCasePicker();
+      }
+      nameInput.focus();
+    }
+
+    function parseCaseCards(caseSource) {
+      const casesMatch = caseSource.match(/const CASES = enforceCaseRules\(\[([\s\S]*?)\]\);/);
+      if (!casesMatch) {
+        return [];
+      }
+
+      const casesBlock = casesMatch[1];
+      const results = [];
+      const caseRegex = /\{\s*name:\s*'((?:\\'|[^'])*)'[\s\S]*?items:\s*\[([\s\S]*?)\]\s*\}/g;
+
+      for (const caseMatch of casesBlock.matchAll(caseRegex)) {
+        const caseName = caseMatch[1].replace(/\\'/g, "'");
+        const itemsBlock = caseMatch[2];
+        const itemRegex = /\{\s*name:\s*'((?:\\'|[^'])*)'\s*,\s*rarity:\s*'([^']+)'\s*\}/g;
+
+        for (const itemMatch of itemsBlock.matchAll(itemRegex)) {
+          const itemName = itemMatch[1].replace(/\\'/g, "'");
+          const rarityKey = itemMatch[2];
+          results.push({
+            caseName,
+            name: itemName,
+            rarityKey,
+          });
+        }
+      }
+
+      return results;
+    }
+
+    async function loadCasePicker() {
+      caseCardPicker.innerHTML = '<option value="">Loading case cards...</option>';
+      setMessage(pickerMessage, '', false);
+
+      try {
+        const response = await fetch('case.js', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error('Unable to read case.js');
+        }
+
+        const source = await response.text();
+        const allCards = parseCaseCards(source);
+
+        if (allCards.length === 0) {
+          caseCardPicker.innerHTML = '<option value="">No case cards found.</option>';
+          setMessage(pickerMessage, 'No cards parsed from case list.', true);
+          return;
+        }
+
+        pickerOptions = allCards;
+        caseCardPicker.innerHTML = '<option value="">Select a card to auto-fill...</option>';
+        allCards.forEach((card, index) => {
+          const option = document.createElement('option');
+          option.value = String(index);
+          option.textContent = card.name + ' (' + card.caseName + ' | ' + card.rarityKey + ')';
+          caseCardPicker.appendChild(option);
+        });
+
+        setMessage(pickerMessage, 'Loaded ' + allCards.length + ' selectable cards.', false);
+      } catch (error) {
+        caseCardPicker.innerHTML = '<option value="">Failed to load cards.</option>';
+        setMessage(pickerMessage, 'Could not load case card list.', true);
+      }
+    }
+
+    function applyPickerSelection() {
+      const optionIndex = Number(caseCardPicker.value);
+      if (!Number.isInteger(optionIndex) || optionIndex < 0 || optionIndex >= pickerOptions.length) {
+        return;
+      }
+
+      const selected = pickerOptions[optionIndex];
+      nameInput.value = selected.name;
+      caseInput.value = selected.caseName;
+      rarityInput.value = selected.rarityKey;
+      setMessage(pickerMessage, 'Applied ' + selected.name + ' from ' + selected.caseName + '.', false);
+    }
+
+    function getSafeNumber(input, fallback) {
+      const value = Number(input);
+      return Number.isFinite(value) ? value : fallback;
+    }
+
+    function grantCards() {
+      const name = (nameInput.value || '').trim();
+      const caseName = (caseInput.value || '').trim() || 'Admin Case';
+      const rarity = rarityInput.value;
+      const quantity = Math.max(1, Math.min(500, Math.floor(getSafeNumber(quantityInput.value, 1))));
+      const attack = getSafeNumber(atkInput.value, 100);
+      const defense = getSafeNumber(defInput.value, 100);
+      const image = (imageInput.value || '').trim();
+      const description = (descriptionInput.value || '').trim();
+
+      if (!name) {
+        setMessage(grantMessage, 'Card name is required.', true);
+        return;
+      }
+
+      let added = 0;
+      for (let i = 0; i < quantity; i += 1) {
+        addCardToInventory({
+          name,
+          rarity,
+          rarityKey: rarity,
+          attack,
+          defense,
+          image,
+          description,
+          caseName,
+          wonAt: new Date().toISOString(),
+        });
+        added += 1;
+      }
+
+      setMessage(grantMessage, 'Added ' + added + ' card(s): ' + name + '.', false);
+    }
+
+    unlockBtn.addEventListener('click', unlockAdmin);
+    passwordInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        unlockAdmin();
+      }
+    });
+    caseCardPicker.addEventListener('change', applyPickerSelection);
+    grantBtn.addEventListener('click', grantCards);
+  </script>
+</body>
+</html>
