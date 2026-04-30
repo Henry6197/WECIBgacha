@@ -258,7 +258,7 @@ function getTodayKey(date = new Date()) {
 
 function getDailyBossBase(dayKey = getTodayKey()) {
   const [year, month, day] = dayKey.split('-').map(Number);
-  const dayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  const dayNumber = Math.floor(60*1000);
   const index = dayNumber % BOSS_POOL.length;
   return BOSS_POOL[index];
 }
@@ -310,7 +310,7 @@ function createBossCard() {
     dayKey,
     isBoss: true,
     maxHp: Math.round(regularHp * 2.35),
-    battleAttack: Math.round(base.attack * 0.38),
+    battleAttack: Math.round(base.attack*1.15),
     description: 'Graduate boss.',
   };
 }
