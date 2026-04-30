@@ -1,7 +1,7 @@
 const TEAM_LIMIT = 5;
 const BOSS_REWARD = 5000;
 const BOSS_STATE_KEY = 'wecib-gacha-boss-state';
-const BOSS_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+const BOSS_COOLDOWN_MS = 60*1000;
 const TURN_DELAY_MS = 420;
 const ENTRY_DELAY_MS = 360;
 
